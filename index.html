@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh" class="no-js dark">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LastYerterLong</title>
+  <meta name="Description" content="Home Page of iissnan">
+  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+  <link rel="stylesheet" type="text/css" href="main.css"/>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?22392938c9a8993fa455fbde77999ded";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-79793350-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-79793350-4');
+</script>
+
+</head>
+
+<body>
+  <div class="vi">
+    <h1 class="animate-slide-in-down">LastYerterLong</h1>
+    <div class="quote">
+      <span class="quote-line quote-line-start animate-slide-in-left"></span>
+      <span class="quote-icon quote-icon-start animate-slide-in-down">
+      </span>
+      <p class="quote-content animate-slide-in-down"><center>"所以我时常害怕，愿中国青年都摆脱冷气，只是向上走，</br>不必听自暴自弃者流的话。</br>能做事的做事，能发声的发声。</br>有一分热，发一分光，就令萤火一般，</br>也可以在黑暗里发一点光，不必等候炬火。</br>此后如竟没有炬火：我便是唯一的光。</br>倘若有了炬火，出了太阳，我们自然心悦诚服的消失，</br>不但毫无不平，而且还要随喜赞美这炬火或太阳；</br>因为他照了人类，连我都在内。</br>我又愿中国青年都只是向上走，不必理会这冷笑和暗箭。"</center></center></p>
+      <p class="quote-author animate-slide-in-down"> -------- <em> 鲁迅</em> </p>
+      <span class="quote-icon quote-icon-end animate-slide-in-up">
+      </span>
+      <span class="quote-line quote-line-end animate-slide-in-right"></span>
+    </div>
+    <div class="links">
+      <a href="http://fzoj.xndxfz.com" class="animate-slide-in-down">FZoj</a>
+      <a href="http://fzuoj.xndxfz.com" class="animate-slide-in-down">FZuoj</a>
+      <a href="https://www.luogu.org/" class="animate-slide-in-down">Luogu</a>
+      <a href="https://csacademy.com/app/graph_editor/" class="animate-slide-in-down">Graph Editor</a>
+      <a href="http://poj.org/" class="animate-slide-in-down">Poj</a>
+      <a href="https://codeforces.com/" class="animate-slide-in-down">CodeForce</a>
+      <a href="https://github.com/" class="animate-slide-in-down">GitHub</a>
+    </div>
+    <div class="location">
+      <span class="location-icon animate-slide-in-up">
+
+      </span>
+      <span class="location-text animate-slide-in-down">Chongqing - China</span>
+    </div>
+    <div class="relocating">
+      Navigating to: <span class="relocate-location"></span>...
+    </div>
+  </div>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script>
+    $(function () {
+      var SLIDE_IN_DOWN = { opacity: 1, top: 0 };
+      var SLIDE_IN_UP = { opacity: 1, bottom: 0 };
+      var SLIDE_IN_LEFT = { left: 0 };
+      var SLIDE_IN_RIGHT = { right: 0 };
+
+      registerCheatCode();
+      executeAnimations();
+
+      function executeAnimations() {
+        $.when()
+          .then(animateTitle)
+          .then(animateQuote)
+          .then(animateLinks)
+          .then(animateLocation);
+      }
+
+      function animateTitle() {
+        return animate('h1', SLIDE_IN_DOWN);
+      }
+
+      function animateQuote() {
+        return $.when(
+          animate('.quote-line-start', SLIDE_IN_LEFT),
+          animate('.quote-line-end',SLIDE_IN_RIGHT),
+          animate('.quote-icon-start', SLIDE_IN_DOWN),
+          animate('.quote-icon-end', SLIDE_IN_UP)
+        )
+          .then(function () {
+            return animate('.quote-content', SLIDE_IN_DOWN);
+          })
+          .then(function () {
+            return animate('.quote-author', SLIDE_IN_DOWN);
+          });
+      }
+
+      function animateLinks() {
+        var DELAY_STEP = 200;
+        var elements = $('.links a');
+        var concurrent = $.makeArray(elements)
+          .map(function (element, index) {
+            return animate(element, SLIDE_IN_DOWN, index * DELAY_STEP);
+          });
+
+        return $.when.apply($, concurrent);
+      }
+
+      function animateLocation() {
+        return $.when(
+          animate('.location-icon', SLIDE_IN_UP),
+          animate('.location-text', SLIDE_IN_DOWN)
+        );
+      }
+
+      function animate(selector, properties, delay, options) {
+        delay = delay || 0;
+        return $(selector).delay(delay)
+          .animate(properties, options)
+          .promise();
+      }
+
+      function registerCheatCode() {
+        $(document.body).on('keydown', function (event) {
+          var KEY_B = 66;
+
+          if (event.which === KEY_B) {
+            $('.relocate-location').text('Bookmark Page');
+            $('.relocating').css('opacity', 1);
+
+            window.setTimeout(function () {
+              window.location.href = '/bookmarks.html';
+            }, 1000);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
